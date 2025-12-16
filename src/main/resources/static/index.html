@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date Day Finder</title>
+</head>
+<body>
+
+<h2>Date Day Finder</h2>
+
+<button onclick="openDialog()">Select Date</button>
+
+<script>
+    function openDialog() {
+        const date = prompt("Enter date (YYYY-MM-DD):");
+
+        if (date) {
+            fetch(`/api/date/day?date=${date}`)
+                .then(response => response.text())
+                .then(day => alert("Day of the week: " + day))
+                .catch(err => alert("Invalid date"));
+        }
+    }
+</script>
+
+</body>
+</html>
